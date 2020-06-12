@@ -33,4 +33,4 @@ jobs:
       - name: Installing Surge
         run: npm install -g surge
       - name: Deploying to surge
-        run: surge ./build arif_expense-tracker.surge.sh --token ${{ secrets.SURGE_TOKEN }}1
+        run: surge ./build arif_expense-tracker.surge.sh --token ${{ secrets.SURGE_TOKEN }}
