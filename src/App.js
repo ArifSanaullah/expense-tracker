@@ -2,8 +2,8 @@ import React, { useReducer } from "react";
 import "./App.css";
 import Balance from "./components/Balance/";
 import Summary from "./components/Summary/";
-import IncomeContext from "./contexts/Transaction";
-import incomeReducer from "./reducers/Income";
+import TrxContext from "./contexts/Transaction";
+import trxReducer from "./reducers/Transaction";
 import Transaction from "./components/Transaction";
 
 const initialState = {
@@ -14,21 +14,21 @@ const initialState = {
   },
   transactions: [
     { trxType: "income", trxName: "Test income 1", trxAmount: 3545 },
-    { trxType: "income", trxName: "Test income 2", trxAmount: 45 },
     { trxType: "expense", trxName: "Test expense 1", trxAmount: 485 },
+    { trxType: "income", trxName: "Test income 2", trxAmount: 45 },
   ],
 };
 
 function App() {
-  const [state, dispatch] = useReducer(incomeReducer, initialState);
+  const [state, dispatch] = useReducer(trxReducer, initialState);
   return (
-    <IncomeContext.Provider value={{ state, dispatch }}>
-      <div>
-        <Balance />
-        <Transaction />
-        <Summary />
-      </div>
-    </IncomeContext.Provider>
+    <TrxContext.Provider value={{ state, dispatch }}>
+        <div className="container">
+          <Transaction />
+          <Balance />
+          <Summary />
+        </div>
+    </TrxContext.Provider>
   );
 }
 

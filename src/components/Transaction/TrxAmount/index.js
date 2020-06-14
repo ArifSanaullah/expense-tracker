@@ -16,6 +16,7 @@ function TrxAmount() {
         type="text"
         value={trxAmount || ""}
         placeholder="Amount in numbers"
+        className="trxInput trxAmount"
         onChange={(e) => {
           const amount = parseInt(e.target.value);
           dispatch({
@@ -26,12 +27,10 @@ function TrxAmount() {
       />
 
       <button
+        className="addtrx-btn"
         onClick={() => {
-          const newTransaction = {
-            trxAmount,
-          };
           dispatch({
-            payload: { ...newTransaction },
+            payload: { trxAmount },
           });
           dispatch({ type: ADD_TRX });
         }}

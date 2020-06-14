@@ -1,38 +1,202 @@
-.App {
-  text-align: center;
+:root {
+  --cyan: #a2f6e0;
+  --black: #111518;
+  --white: #f7f3f6;
+  --red: #ed2939;
+  --green: #0bda51;
+  --blue: #73c2fb;
+  --blue-rgba: rgba(115, 194, 251, 0.1);
+  --green-rgba: rgba(11, 218, 81, 0.3);
+  --red-rgba: rgba(237, 41, 57, 0.3);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html,
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+html {
+  font-size: 62.5%;
+  color: var(--white);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body {
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  background-color: var(--black);
+  height: auto;
+  padding: 0 5rem;
+}
+
+.make-a-transaction {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-self: center;
 }
 
-.App-link {
-  color: #61dafb;
+.trxInput {
+  padding: 0.75rem 1.5rem;
+  margin: 0.5rem 0;
+  border: none;
+  border-radius: 3px;
+  background-color: var(--white);
+  color: var(--black);
+  font-size: 1.6rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.trxInput,
+.trxInput:focus,
+.trxInput:active {
+  outline: none;
+}
+
+.addtrx-btn {
+  display: block;
+  width: 100%;
+  margin-top: 2rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.6rem;
+  color: var(--black);
+  cursor: pointer;
+  border: none;
+  border-radius: 3px;
+  transition: all 0.4s;
+}
+
+.addtrx-btn:hover {
+  box-shadow: 1px 2px 5px var(--white);
+}
+
+.balance {
+  align-self: center;
+  padding: 0 2rem;
+  text-align: center;
+  max-width: 40rem;
+  margin-left: -10rem;
+}
+
+.balance .quote {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.balance .current {
+  background-color: var(--blue-rgba);
+}
+
+.summary .income {
+  background-color: var(--green-rgba);
+}
+
+.summary .expense {
+  background-color: var(--red-rgba);
+}
+
+.balance .current,
+.summary .income,
+.summary .expense {
+  position: relative;
+  padding: 2rem 1rem;
+}
+
+.current h3,
+.income h3,
+.expense h3,
+.transaction h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.current h1,
+.income h1,
+.expense h1,
+.transaction h1 {
+  font-size: 4rem;
+}
+
+.balance .current::before,
+.summary .income::before,
+.summary .expense::before,
+.transaction-expense::before,
+.transaction-income::before {
+  content: "";
+  width: 1rem;
+  height: 100%;
+  display: inline-block;
+  position: absolute;
+  right: -1rem;
+  top: 0;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.balance .current::before {
+  background-color: var(--blue);
+}
+
+.summary .income::before {
+  background-color: var(--green);
+}
+
+.summary .expense::before {
+  background-color: var(--red);
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem;
+  max-width: fit-content;
+}
+
+.stats {
+  display: flex;
+  align-self: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.stats .income {
+  margin-right: 3rem;
+}
+
+.transactions-container {
+  margin-top: 2rem;
+}
+
+.transactions {
+  list-style: none;
+}
+
+.transaction {
+  position: relative;
+  padding: 1rem 0 1rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.transaction-expense {
+  background-color: var(--red-rgba);
+}
+
+.transaction-expense::before {
+  background-color: red;
+}
+
+.transaction-income {
+  background-color: var(--green-rgba);
+}
+
+.transaction-income::before {
+  background-color: var(--green);
 }

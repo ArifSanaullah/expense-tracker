@@ -13,18 +13,19 @@ function Transaction() {
   } = useContext(trxContext);
 
   return (
-    <div>
-      Transaction
+    <div className="make-a-transaction">
+      <h1 className="heading">Make a Transaction</h1>
       <select
         name="trxType"
         id="trxType"
+        className="trxType trxInput"
+        defaultValue=""
         onChange={(e) => {
           dispatch({
             type: SET_TRX_TYPE,
             payload: { trxType: e.target.value },
           });
         }}
-        defaultValue=""
       >
         <option value="" disabled>
           Select
@@ -35,6 +36,8 @@ function Transaction() {
       {trxType && (
         <input
           type="text"
+          placeholder="Transaction Name"
+          className="trxInput"
           value={trxName || ""}
           onChange={(e) => {
             dispatch({
@@ -42,7 +45,6 @@ function Transaction() {
               payload: { trxName: e.target.value },
             });
           }}
-          placeholder="Transaction Name"
         />
       )}
       {trxType && trxType === "income" && <Income />}

@@ -3,7 +3,7 @@ import {
   SET_TRX_NAME,
   SET_TRX_TYPE,
   ADD_TRX,
-} from "../actionTypes/";
+} from "../actionTypes";
 
 const incomeReducer = (state, action) => {
   switch (action.type) {
