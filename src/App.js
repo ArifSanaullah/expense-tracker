@@ -1,25 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useReducer } from "react";
+import "./App.css";
+import Balance from "./components/Balance/";
+import Summary from "./components/Summary/";
+import IncomeContext from "./contexts/Transaction";
+import incomeReducer from "./reducers/Income";
+import Transaction from "./components/Transaction";
+
+const initialState = {
+  transaction: {
+    trxType: "",
+    trxName: "",
+    trxAmount: "",
+  },
+  transactions: [
+    { trxType: "income", trxName: "Test income 1", trxAmount: 3545 },
+    { trxType: "income", trxName: "Test income 2", trxAmount: 45 },
+    { trxType: "expense", trxName: "Test expense 1", trxAmount: 485 },
+  ],
+};
 
 function App() {
+  const [state, dispatch] = useReducer(incomeReducer, initialState);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <IncomeContext.Provider value={{ state, dispatch }}>
+      <div>
+        <Balance />
+        <Transaction />
+        <Summary />
+      </div>
+    </IncomeContext.Provider>
   );
 }
 
