@@ -32,7 +32,7 @@ function TrxAmount() {
           dispatch({
             payload: { trxAmount },
           });
-          dispatch({ type: ADD_TRX });
+          trxAmount && dispatch({ type: ADD_TRX });
         }}
       >
         {trxType === "income" ? "Add income" : "Add Expense"}

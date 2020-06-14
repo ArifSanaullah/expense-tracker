@@ -28,7 +28,7 @@ function Transaction() {
         }}
       >
         <option value="" disabled>
-          Select
+          Select Transaction type
         </option>
         <option value="income">Income</option>
         <option value="expense">Expense</option>
@@ -47,8 +47,8 @@ function Transaction() {
           }}
         />
       )}
-      {trxType && trxType === "income" && <Income />}
-      {trxType && trxType === "expense" && <Expense />}
+      {trxType && trxName && trxType === "income" && <Income />}
+      {trxType && trxName && trxType === "expense" && <Expense />}
     </div>
   );
 }
